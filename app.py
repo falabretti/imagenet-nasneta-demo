@@ -50,6 +50,7 @@ def predict(model, classes, image):
 def show_result(image, prediction):
     plt.imshow(image)
     plt.title(prediction, fontdict={ 'size': 20 })
+    plt.axis('off')
     plt.show()
 
 
