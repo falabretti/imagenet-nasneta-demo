@@ -1,3 +1,5 @@
 *.txt
 imagenet_nasnet_large_classification_5
 imagenet_nasnet_large_classification_5.*
+
+!requirements.txt
