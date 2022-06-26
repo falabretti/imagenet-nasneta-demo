@@ -1,7 +1,23 @@
+import os
+import sys
 import tensorflow_hub as hub
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+
+def get_image_path():
+    if len(sys.argv) < 2:
+        print('No image file specified!')
+        exit()
+
+    file = sys.argv[1]
+
+    if not os.path.isfile(file):
+        print('The provided file is invalid!')
+        exit()
+
+    return os.path.abspath(file)
+
 
 def load_model():
     # https://tfhub.dev/google/imagenet/nasnet_large/classification/5
@@ -37,9 +53,10 @@ def show_result(image, prediction):
     plt.show()
 
 
+file_path = get_image_path()
 model = load_model()
 classes = load_classes()
-image = load_image('images/chair.jpg')
+image = load_image(file_path)
 
 prediction = predict(model, classes, image)
 show_result(image, prediction)
